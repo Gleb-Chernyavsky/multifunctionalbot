@@ -1,7 +1,11 @@
 # Multifunctional VK Bot
-## How to run aplication
-1. Для запуска приложения необходимо склонировать проект и запустить его(Для этого необходим jdk 8)
-2. В конфигурационном файле(src/main/resources/application.properties) необходимо указать значения
-    vk.confirmation -- код для подтверждения сервера
-    vk.access-token -- ключ доступа
-    vk.api-version -- версия API
+## How to run aplication with docker
+1. clone project
+2. fill properties in (src/main/resources/application.properties)
+    vk.confirmation -- code for confimation
+    vk.access-token -- group's token
+    vk.api-version
+3. execute follow commands:
+    docker build -t multifunctionalbot .   
+    docker run --publish 8080:8080 multifunctionalbot
+
