@@ -1,21 +1,23 @@
 package com.chernyavskii.multifunctionalbot.dto;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
 public class CallbackDto {
     private String type;
-    private Map<String, Map<String, Object>> object;
+    @JsonProperty(value = "object")
+    private Map<String, Map<String, Object>> operationData;
     @JsonProperty(value = "group_id")
     private Long groupId;
     private String secret;
     @JsonProperty(value = "event_id")
     private String eventId;
 
-    public CallbackDto(String type, Map<String, Map<String, Object>> object, Long groupId, String secret, String eventId) {
+    public CallbackDto(String type, Map<String, Map<String, Object>> operationData, Long groupId, String secret, String eventId) {
         this.type = type;
-        this.object = object;
+        this.operationData = operationData;
         this.groupId = groupId;
         this.secret = secret;
         this.eventId = eventId;
@@ -32,12 +34,12 @@ public class CallbackDto {
         this.type = type;
     }
 
-    public Map<String, Map<String, Object>> getObject() {
-        return object;
+    public Map<String, Map<String, Object>> getOperationData() {
+        return operationData;
     }
 
-    public void setObject(Map<String, Map<String, Object>> object) {
-        this.object = object;
+    public void setOperationData(Map<String, Map<String, Object>> operationData) {
+        this.operationData = operationData;
     }
 
     public Long getGroupId() {

@@ -41,14 +41,14 @@ public class CallbackHandleService {
         restTemplate.postForEntity(uri, null, Object.class);
     }
 
-    public URI createUri(CallbackDto dto) {
+    private URI createUri(CallbackDto dto) {
         return UriComponentsBuilder.fromHttpUrl("https://api.vk.com/method/messages.send")
                 .queryParam("access_token", accessToken)
                 .queryParam("v", version)
-                .queryParam("peer_id", dto.getObject().get("message").get("peer_id"))
-                .queryParam("message", "Вы сказали: " + dto.getObject().get("message").get("text"))
+                .queryParam("peer_id", dto.getOperationData().get("message").get("peer_id"))
+                .queryParam("message", "Вы сказали: " + dto.getOperationData().get("message").get("text"))
                 .queryParam("group_id", dto.getGroupId())
-                .queryParam("random_id", dto.getObject().get("message").hashCode())
+                .queryParam("random_id", dto.getOperationData().get("message").hashCode())
                 .build()
                 .toUri();
     }
